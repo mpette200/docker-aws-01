@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+      
     - name: Build the Docker image
       run: |
+        wget https://download.oracle.com/otn_software/linux/instantclient/1918000/instantclient-basiclite-linux.x64-19.18.0.0.0dbru.zip
         docker build . --file Dockerfile --tag my-sample-image
