@@ -14,7 +14,7 @@ RUN echo $LD_LIBRARY_PATH
 
 RUN pip freeze
 RUN pip install --verbose oracledb
-RUN ls -al /usr/lib/python3/dist-packages
+RUN ls -al /var/lang/lib/python3.9/site-packages
 RUN ls -al ${LAMBDA_RUNTIME_DIR}
 RUN ls -al ${LAMBDA_TASK_ROOT}
 
