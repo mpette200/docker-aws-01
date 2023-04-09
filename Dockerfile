@@ -9,9 +9,12 @@ COPY instantclient-basiclite-linux.x64-19.18.0.0.0dbru.zip /usr/my-libs/oracle-c
 RUN unzip /usr/my-libs/oracle-client/instantclient-basiclite-linux.x64-19.18.0.0.0dbru.zip -d /usr/my-libs/oracle-client
 RUN rm /usr/my-libs/oracle-client/instantclient-basiclite-linux.x64-19.18.0.0.0dbru.zip
 RUN ls -al /usr/my-libs/oracle-client
+ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/my-libs/oracle-client/$(ls /usr/my-libs/oracle-client)"
+RUN echo $LD_LIBRARY_PATH
 
 RUN pip freeze
-RUN pip install oracledb
+RUN pip install --verbose oracledb
+RUN ls -al /usr/lib/python3/dist-packages
 RUN ls -al ${LAMBDA_RUNTIME_DIR}
 RUN ls -al ${LAMBDA_TASK_ROOT}
 
